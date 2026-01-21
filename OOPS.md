@@ -155,4 +155,143 @@ class Circle extends Shape{
 	}
 }
 ```
+
+### Access Modifiers
+4 types of access modifiers in JAVA:
+- **public** : accessible in the class + accessible inside any package. If an object is created, it can be accessed.
+- **private** : no access outside the class.
+- **protected** : only sub classes in the different package can access. anyone in the current package.
+- **default** : default access modifier when not specified.
+
+#### How to access private then?
+- Getter: give back the information of private
+- Setter: set value for the private thing
+- example:
+```java
+class User {
+    private String name; // Private variable (hidden)
+
+    // GETTER: Returns the private value
+    public String getName() {
+        return name;
+    }
+
+    // SETTER: Sets or updates the private value
+    public void setName(String newName) {
+        this.name = newName;
+    }
+}
+
+// --- Usage ---
+public class Main {
+    public static void main(String[] args) {
+        User obj = new User();
+
+        // 1. Set the value using Setter
+        obj.setName("Alex");
+
+        // 2. Get the value using Getter
+        System.out.println(obj.getName()); // Output: Alex
+    }
+}
+```
+**This is Encapsulation**
+
+### Encapsulation
+- Core Definition: The process of wrapping data (attributes) and functions (methods) together into a single unit called a Class.
+- The "Barrier": Data is not accessed directly. Instead, it is accessed only through functions inside that class.
+#### Implementation:
+- Keep attributes private.
+- Provide public Getter and Setter methods to view or change the data.
+- Data Hiding: A feature that restricts direct access to object members to reduce errors and dependencies.
+- Uses access modifiers like private and protected to control visibility.
+
+### Abstraction
+
+```java
+abstract class Animal{ // abstract class
+	abstract void walk(); // abstract method
+}
+class Horse extends Animal{
+	public void walk(){
+		System.out.println("4 Legs");
+	}
+}
+class Chicken extends Animal{
+	public void walk(){
+		System.out.println("2 Legs");
+	}
+}
+public class OOPS{
+	public static void main(String[] args){
+		Horse horse = new Horse();
+		horse.walk(); // 4 legs
+		
+		// Animal animal = new Animal();
+		// animal.walk()
+		// **cannot instantiate object (runtime error)
+		// because animal is an abstract concept
+	}
+}
+```
+- class Animal is just a concept. It has no property or method that we are using. So we use abstraction. 
+Abstraction is achieved in 2 ways: 
+- Abstract class
+- Interfaces (Pure Abstraction)
+#### Abstract class
+- An abstract class must be declared with an abstract keyword.
+- It can have abstract and non-abstract methods.
+- It cannot be instantiated.
+- It can have constructors and static methods also.
+- It can have final methods which will force the subclass not to change the body of the method.
+
+**When we call a object of derived class, first the base class constructor is called; then the constructor of derived class is called.
+This is called constructor chaining.*** 
+
+#### Interfaces (Pure Abstraction)
+All the fields in interfaces are public, static and final by default.
+All methods are public & abstract by default.
+A class that implements an interface must implement all the methods declared in the interface.
+Interfaces support the functionality of multiple inheritance.
+```java
+interface Animal{
+	void walk();
+	// Animal() -> Interfaces cannot have constructors
+	// cannot have a non abstract method: definition or implementation
+}
+
+class Horse implements Animal{
+	public void walk(){
+		System.out.println("4 legs");
+	}
+}
+
+public class OOPS{
+	public static void main(String[] args){
+		Horse horse = new Horse();
+		horse.walk();
+	}
+}	
+```
 ## Packages
+```java
+package bank;
+
+class Account{
+	String name;
+}
+
+public class bank{
+
+}
+```
+
+```java
+import bank;
+public class OOP{
+	public static void main(String[] args){
+		bank.Account account1 = new bank.Account();
+		account1.name = "Customer 1";
+	}
+}
+```
