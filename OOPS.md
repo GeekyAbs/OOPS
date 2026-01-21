@@ -206,7 +206,7 @@ public class Main {
 - Data Hiding: A feature that restricts direct access to object members to reduce errors and dependencies.
 - Uses access modifiers like private and protected to control visibility.
 
-### Abstraction
+## Abstraction
 
 ```java
 abstract class Animal{ // abstract class
@@ -238,7 +238,7 @@ public class OOPS{
 Abstraction is achieved in 2 ways: 
 - Abstract class
 - Interfaces (Pure Abstraction)
-#### Abstract class
+### Abstract class
 - An abstract class must be declared with an abstract keyword.
 - It can have abstract and non-abstract methods.
 - It cannot be instantiated.
@@ -248,19 +248,23 @@ Abstraction is achieved in 2 ways:
 **When we call a object of derived class, first the base class constructor is called; then the constructor of derived class is called.
 This is called constructor chaining.*** 
 
-#### Interfaces (Pure Abstraction)
+### Interfaces (Pure Abstraction)
 All the fields in interfaces are public, static and final by default.
 All methods are public & abstract by default.
 A class that implements an interface must implement all the methods declared in the interface.
 Interfaces support the functionality of multiple inheritance.
 ```java
 interface Animal{
-	void walk();
+	int eyes = 2; // fixed for all animals
+	// public value and static
+	void walk(); // by default is public
 	// Animal() -> Interfaces cannot have constructors
 	// cannot have a non abstract method: definition or implementation
 }
-
-class Horse implements Animal{
+interface Herbivore{
+	
+}
+class Horse implements Animal, Herbivore{
 	public void walk(){
 		System.out.println("4 legs");
 	}
@@ -273,7 +277,38 @@ public class OOPS{
 	}
 }	
 ```
+**Multiple Inheritance (e.g. Horse inherited both Animal and Herbivore) is only possible through Interfaces and not through classes.
+
+## Static
+- Variable (also known as a class variable)
+- Method (also known as a class method)
+- Block
+- Nested class
+```java
+class Student{
+	String name;
+	static String school; // fixes one school for every Student object
+	public static void changeSchool(){
+		school = "Christ"; // will update the school for every student
+	}
+}
+public class OOP{
+	public static void main(String[] args){
+		Student.school = "Douglas";
+		Student std1 = new Student();
+		std1.name = "Abhishek";
+		System.out.println(std1.school); // prints Douglas
+	}
+}
+```
+- Memory to static keyword is given only once. 
+- Objects are given memory multiple times.
+- Static saves memory.
 ## Packages
+- Package is a group of similar types of classes, interfaces and sub-packages.
+- Packages can be built-in or user defined.
+- Built-in packages - java, util, io etc.
+
 ```java
 package bank;
 
