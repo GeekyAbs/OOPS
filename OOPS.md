@@ -103,7 +103,7 @@ class Student {
 - makes a copy of a object
 
 ## Destructors
-**Definition: 
+*Definition:*
 A mechanism to destroy objects that are no longer in use to free up memory.
 - no destructors in java
 - automatically deletes unused objects, variables, etc.
